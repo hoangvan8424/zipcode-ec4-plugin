@@ -48,12 +48,12 @@ class ConfigController extends AbstractController
                 /** @var KernelInterface $kernel */
                 $kernel = $this->get('kernel');
                 $codeDir = $kernel->getProjectDir();
+                $sourceDir = $codeDir . '/' . $folderName;
 
                 $fs = new Filesystem();
                 $fs->mkdir($backupDir);
 
                 $dirEnd = $backupDir . '.zip';
-                $sourceDir = $codeDir . '/html';
                 $zip = new ZipArchive();
 
                 if ($zip->open($dirEnd, ZipArchive::CREATE | ZipArchive::OVERWRITE) === true) {
@@ -66,8 +66,11 @@ class ConfigController extends AbstractController
                         }
                     }
                     $zip->close();
+                    $this->clearMessage();
                     return (new BinaryFileResponse($dirEnd))->setContentDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT);
                 }
+            } else {
+                $this->addError('郵便番号が失敗しました。 無効なフォルダ名です。', 'admin');
             }
         }
         return [
