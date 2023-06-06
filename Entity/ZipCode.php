@@ -4,14 +4,14 @@ namespace Plugin\Zipcode\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-if (!class_exists('\Plugin\Zipcode\Entity\Config', false)) {
+if (!class_exists('\Plugin\Zipcode\Entity\ZipCode', false)) {
     /**
      * Config
      *
      * @ORM\Table(name="plg_zipcode_config")
      * @ORM\Entity(repositoryClass="Plugin\Zipcode\Repository\ConfigRepository")
      */
-    class Config
+    class ZipCode
     {
         const FOLDER_NAME = ['app', 'html', 'src', 'dockerbuild', 'bin'];
         /**

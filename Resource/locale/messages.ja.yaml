@@ -1,0 +1,6 @@
+plugin_zip_code.admin.title: 郵便番号
+plugin_zip_code.admin.subtitle: とダウンロード
+plugin_zip_code.admin.heading: 圧縮するフォルダー名
+plugin_zip_code.admin.folder_name: フォルダ名
+plugin_zip_code.admin.folder_accept: フォルダーのみを受け入れます app、html、src、dockerbuild、bin
+plugin_zip_code.admin.btn_apply: 圧縮してダウンロード

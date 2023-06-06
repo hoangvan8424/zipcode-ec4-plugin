@@ -3,7 +3,7 @@
 namespace Plugin\Zipcode\Repository;
 
 use Eccube\Repository\AbstractRepository;
-use Plugin\Zipcode\Entity\Config;
+use Plugin\Zipcode\Entity\ZipCode;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -21,13 +21,13 @@ class ConfigRepository extends AbstractRepository
      */
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Config::class);
+        parent::__construct($registry, ZipCode::class);
     }
 
     /**
      * @param int $id
      *
-     * @return null|Config
+     * @return null|ZipCode
      */
     public function get($id = 1)
     {

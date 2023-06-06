@@ -2,8 +2,8 @@
 
 {% set menus = ['store', 'plugin', 'plugin_list'] %}
 
-{% block title %}Zipcode{% endblock %}
-{% block sub_title %}プラグイン一覧{% endblock %}
+{% block title %}{{ 'plugin_zip_code.admin.title'|trans }}{% endblock %}
+{% block sub_title %}{{ 'plugin_zip_code.admin.subtitle'|trans }}{% endblock %}
 
 {% form_theme form '@admin/Form/bootstrap_4_horizontal_layout.html.twig' %}
 
@@ -13,14 +13,12 @@
 
 {% block main %}
     <form role="form" method="post">
-
         {{ form_widget(form._token) }}
-
         <div class="c-contentsArea__cols">
             <div class="c-contentsArea__primaryCol">
                 <div class="c-primaryCol">
                     <div class="card rounded border-0 mb-4">
-                        <div class="card-header"><span>圧縮するフォルダー名</span></div>
+                        <div class="card-header"><span>{{ 'plugin_zip_code.admin.heading'|trans }}</span></div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-3">
@@ -29,7 +27,7 @@
                                 <div class="col mb-2">
                                     {{ form_widget(form.folder_name) }}
                                     {{ form_errors(form.folder_name) }}
-                                    <p id="message">フォルダーのみを受け入れます: app、html、src、dockerbuild、bin</p>
+                                    <p id="message">{{ 'plugin_zip_code.admin.folder_accept'|trans }}</p>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary btn-xs mt-2">申し込み</button>

@@ -2,7 +2,7 @@
 
 namespace Plugin\Zipcode\Form\Type\Admin;
 
-use Plugin\Zipcode\Entity\Config;
+use Plugin\Zipcode\Entity\ZipCode;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -31,7 +31,7 @@ class ConfigType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Config::class,
+            'data_class' => ZipCode::class,
         ]);
     }
 }

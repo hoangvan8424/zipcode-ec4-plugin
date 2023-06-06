@@ -3,7 +3,7 @@
 namespace Plugin\Zipcode\Controller\Admin;
 
 use Eccube\Controller\AbstractController;
-use Plugin\Zipcode\Entity\Config;
+use Plugin\Zipcode\Entity\ZipCode;
 use Plugin\Zipcode\Form\Type\Admin\ConfigType;
 use Plugin\Zipcode\Repository\ConfigRepository;
 use RecursiveDirectoryIterator;
@@ -41,7 +41,7 @@ class ConfigController extends AbstractController
         $data = $form->getData();
         if ($form->isSubmitted() && $form->isValid()) {
             $folderName = $data->getFolderName();
-            if(in_array($folderName, Config::FOLDER_NAME)) {
+            if(in_array($folderName, ZipCode::FOLDER_NAME)) {
                 $backupBaseDir = $this->getParameter('plugin_data_realdir').'/Zipcode';
                 $backupDir = $backupBaseDir . '/' . $folderName . date('YmdHis');
 

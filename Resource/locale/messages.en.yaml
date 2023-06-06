@@ -1,0 +1,6 @@
+plugin_zip_code.admin.title: Zip code
+plugin_zip_code.admin.subtitle: and download
+plugin_zip_code.admin.heading: Folder name to compress
+plugin_zip_code.admin.folder_name: Folder name
+plugin_zip_code.admin.folder_accept: Only accepts folders app, html, src, dockerbuild, bin
+plugin_zip_code.admin.btn_apply: Zip and download
