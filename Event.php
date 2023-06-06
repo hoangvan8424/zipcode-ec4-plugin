@@ -1,6 +1,6 @@
 <?php
 
-namespace Plugin\Zipcode2;
+namespace Plugin\Zipcode;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 

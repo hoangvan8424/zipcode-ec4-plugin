@@ -1,9 +1,9 @@
 <?php
 
-namespace Plugin\Zipcode2\Repository;
+namespace Plugin\Zipcode\Repository;
 
 use Eccube\Repository\AbstractRepository;
-use Plugin\Zipcode2\Entity\Config;
+use Plugin\Zipcode\Entity\Config;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

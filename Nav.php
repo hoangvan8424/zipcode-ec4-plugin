@@ -1,6 +1,6 @@
 <?php
 
-namespace Plugin\Zipcode2;
+namespace Plugin\Zipcode;
 
 use Eccube\Common\EccubeNav;
 

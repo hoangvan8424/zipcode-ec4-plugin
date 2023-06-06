@@ -1,8 +1,8 @@
 <?php
 
-namespace Plugin\Zipcode2\Form\Type\Admin;
+namespace Plugin\Zipcode\Form\Type\Admin;
 
-use Plugin\Zipcode2\Entity\Config;
+use Plugin\Zipcode\Entity\Config;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,7 +17,7 @@ class ConfigType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name', TextType::class, [
+        $builder->add('folder_name', TextType::class, [
             'constraints' => [
                 new NotBlank(),
                 new Length(['max' => 255]),

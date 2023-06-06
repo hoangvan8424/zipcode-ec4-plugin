@@ -2,7 +2,7 @@
 
 {% set menus = ['store', 'plugin', 'plugin_list'] %}
 
-{% block title %}Zipcode2{% endblock %}
+{% block title %}Zipcode{% endblock %}
 {% block sub_title %}プラグイン一覧{% endblock %}
 
 {% form_theme form '@admin/Form/bootstrap_4_horizontal_layout.html.twig' %}
@@ -20,39 +20,18 @@
             <div class="c-contentsArea__primaryCol">
                 <div class="c-primaryCol">
                     <div class="card rounded border-0 mb-4">
-                        <div class="card-header"><span>設定</span></div>
+                        <div class="card-header"><span>圧縮するフォルダー名</span></div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-3"><span>名前</span><span
-                                            class="badge badge-primary ml-1">必須</span></div>
+                                <div class="col-3">
+                                    <span>フォルダ名</span><span class="badge badge-primary ml-1">必須</span>
+                                </div>
                                 <div class="col mb-2">
                                     {{ form_widget(form.name) }}
                                     {{ form_errors(form.name) }}
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="c-conversionArea">
-            <div class="c-conversionArea__container">
-                <div class="row justify-content-between align-items-center">
-                    <div class="col-6">
-                        <div class="c-conversionArea__leftBlockItem">
-                            <a class="c-baseLink"
-                               href="{{ url('admin_store_plugin') }}">
-                                <i class="fa fa-backward" aria-hidden="true"></i>
-                                <span>プラグイン一覧</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="row align-items-center justify-content-end">
-                            <div class="col-auto">
-                                <button class="btn btn-ec-conversion px-5"
-                                        type="submit">登録</button>
-                            </div>
+                            <button type="submit" class="btn btn-primary btn-xs mt-2">申し込み</button>
                         </div>
                     </div>
                 </div>

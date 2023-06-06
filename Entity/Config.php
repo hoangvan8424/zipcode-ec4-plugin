@@ -1,15 +1,15 @@
 <?php
 
-namespace Plugin\Zipcode2\Entity;
+namespace Plugin\Zipcode\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-if (!class_exists('\Plugin\Zipcode2\Entity\Config', false)) {
+if (!class_exists('\Plugin\Zipcode\Entity\Config', false)) {
     /**
      * Config
      *
-     * @ORM\Table(name="plg_zipcode2_config")
-     * @ORM\Entity(repositoryClass="Plugin\Zipcode2\Repository\ConfigRepository")
+     * @ORM\Table(name="plg_zipcode_config")
+     * @ORM\Entity(repositoryClass="Plugin\Zipcode\Repository\ConfigRepository")
      */
     class Config
     {
