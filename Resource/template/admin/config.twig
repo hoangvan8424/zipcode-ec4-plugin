@@ -27,8 +27,9 @@
                                     <span>フォルダ名</span><span class="badge badge-primary ml-1">必須</span>
                                 </div>
                                 <div class="col mb-2">
-                                    {{ form_widget(form.name) }}
-                                    {{ form_errors(form.name) }}
+                                    {{ form_widget(form.folder_name) }}
+                                    {{ form_errors(form.folder_name) }}
+                                    <p id="message">フォルダーのみを受け入れます: app、html、src、dockerbuild、bin</p>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary btn-xs mt-2">申し込み</button>

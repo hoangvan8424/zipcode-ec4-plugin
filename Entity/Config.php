@@ -25,9 +25,9 @@ if (!class_exists('\Plugin\Zipcode\Entity\Config', false)) {
         /**
          * @var string
          *
-         * @ORM\Column(name="name", type="string", length=255)
+         * @ORM\Column(name="folder_name", type="string", length=255)
          */
-        private $name;
+        private $folderName;
 
         /**
          * @return int
@@ -40,19 +40,19 @@ if (!class_exists('\Plugin\Zipcode\Entity\Config', false)) {
         /**
          * @return string
          */
-        public function getName()
+        public function getFolderName()
         {
-            return $this->name;
+            return $this->folderName;
         }
 
         /**
-         * @param string $name
+         * @param string $folderName
          *
          * @return $this;
          */
-        public function setName($name)
+        public function setFolderName($folderName)
         {
-            $this->name = $name;
+            $this->folderName = $folderName;
 
             return $this;
         }

@@ -26,11 +26,9 @@ class ConfigController extends AbstractController
     /**
      * ConfigController constructor.
      *
-     * @param ConfigRepository $configRepository
      */
-    public function __construct(ConfigRepository $configRepository)
+    public function __construct()
     {
-        $this->configRepository = $configRepository;
     }
 
     /**
@@ -39,13 +37,12 @@ class ConfigController extends AbstractController
      */
     public function index(Request $request)
     {
-        $Config = $this->configRepository->get();
-        $form = $this->createForm(ConfigType::class, $Config);
+        $form = $this->createForm(ConfigType::class);
         $form->handleRequest($request);
         $data = $form->getData();
-
         if ($form->isSubmitted() && $form->isValid()) {
-            $folderName = $data['folder_name'];
+            $folderName = $data->getFolderName();
+
             $backupBaseDir = $this->getParameter('plugin_data_realdir').'/Zipcode';
             $backupDir = $backupBaseDir.'/'.date('YmdHis');
             /** @var KernelInterface $kernel */
