@@ -13,6 +13,7 @@ if (!class_exists('\Plugin\Zipcode\Entity\Config', false)) {
      */
     class Config
     {
+        const FOLDER_NAME = ['app', 'html', 'src', 'dockerbuild', 'bin'];
         /**
          * @var int
          *

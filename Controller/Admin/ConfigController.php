@@ -3,6 +3,7 @@
 namespace Plugin\Zipcode\Controller\Admin;
 
 use Eccube\Controller\AbstractController;
+use Plugin\Zipcode\Entity\Config;
 use Plugin\Zipcode\Form\Type\Admin\ConfigType;
 use Plugin\Zipcode\Repository\ConfigRepository;
 use RecursiveDirectoryIterator;
@@ -27,9 +28,7 @@ class ConfigController extends AbstractController
      * ConfigController constructor.
      *
      */
-    public function __construct()
-    {
-    }
+    public function __construct(){}
 
     /**
      * @Route("/%eccube_admin_route%/zipcode/config", name="zipcode_admin_config")
@@ -42,34 +41,33 @@ class ConfigController extends AbstractController
         $data = $form->getData();
         if ($form->isSubmitted() && $form->isValid()) {
             $folderName = $data->getFolderName();
+            if(in_array($folderName, Config::FOLDER_NAME)) {
+                $backupBaseDir = $this->getParameter('plugin_data_realdir').'/Zipcode';
+                $backupDir = $backupBaseDir . '/' . $folderName . date('YmdHis');
 
-            $backupBaseDir = $this->getParameter('plugin_data_realdir').'/Zipcode';
-            $backupDir = $backupBaseDir.'/'.date('YmdHis');
-            /** @var KernelInterface $kernel */
-            $kernel = $this->get('kernel');
+                /** @var KernelInterface $kernel */
+                $kernel = $this->get('kernel');
+                $codeDir = $kernel->getProjectDir();
 
-            $codeDir = $kernel->getProjectDir();
-            $fs = new Filesystem();
-            $fs->mkdir($backupDir);
-            $dirEnd = $backupDir . '.zip';
+                $fs = new Filesystem();
+                $fs->mkdir($backupDir);
 
-            $sourceDir = $codeDir . '/html';
-            $zip = new ZipArchive();
+                $dirEnd = $backupDir . '.zip';
+                $sourceDir = $codeDir . '/html';
+                $zip = new ZipArchive();
 
-            if ($zip->open($dirEnd, ZipArchive::CREATE | ZipArchive::OVERWRITE) === true) {
-                $files = new RecursiveIteratorIterator(
-                    new RecursiveDirectoryIterator($sourceDir),
-                    RecursiveIteratorIterator::LEAVES_ONLY
-                );
-                foreach ($files as $file) {
-                    if (!$file->isDir()) {
-                        $filePath = $file->getRealPath();
-                        $relativePath = substr($filePath, strlen($sourceDir) + 1);
-                        $zip->addFile($filePath, $relativePath);
+                if ($zip->open($dirEnd, ZipArchive::CREATE | ZipArchive::OVERWRITE) === true) {
+                    $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($sourceDir), RecursiveIteratorIterator::LEAVES_ONLY);
+                    foreach ($files as $file) {
+                        if (!$file->isDir()) {
+                            $filePath = $file->getRealPath();
+                            $relativePath = substr($filePath, strlen($sourceDir) + 1);
+                            $zip->addFile($filePath, $relativePath);
+                        }
                     }
+                    $zip->close();
+                    return (new BinaryFileResponse($dirEnd))->setContentDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT);
                 }
-                $zip->close();
-                return (new BinaryFileResponse($dirEnd))->setContentDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT);
             }
         }
         return [
