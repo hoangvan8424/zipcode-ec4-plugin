@@ -1,0 +1,12 @@
+{
+  "name": "ec-cube/zipcode2",
+  "version": "1.0.0",
+  "description": "Zip Code 2",
+  "type": "eccube-plugin",
+  "require": {
+    "ec-cube/plugin-installer": "~0.0.7 || ^2.0"
+  },
+  "extra": {
+    "code": "Zipcode2"
+  }
+}
