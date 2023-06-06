@@ -69,7 +69,7 @@ class ConfigController extends AbstractController
                     $this->clearMessage();
                     return (new BinaryFileResponse($dirEnd))->setContentDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT);
                 } else {
-                    throw new \Exception('Could not open ZIP file');
+                    throw new \Exception('ZIPファイルを開けませんでした。');
                 }
             } else {
                 $this->addError('郵便番号が失敗しました。 無効なフォルダ名です。', 'admin');
